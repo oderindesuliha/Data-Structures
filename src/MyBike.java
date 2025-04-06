@@ -1,18 +1,18 @@
 public class MyBike {
     private boolean power;
-    private int gear;
     private int speed;
+    private int gear;
 
+
+    public void isOff() {
+
+        power = false;
+    }
 
     public void isOn() {
         power = true;
         speed = 0;
         gear = 1;
-    }
-
-    public void isOff() {
-
-        power = false;
     }
 
     public boolean isPower() {
@@ -28,24 +28,36 @@ public class MyBike {
         return gear;
     }
 
-    public int accelerate() {
-                if (speed < 20) {
-                    speed ++;
-                    gear = 1;
-                }
-                else if (speed > 20 && speed <= 30) {
-                    speed += 2;
-                    gear = 2;
-                }
-                else if (gear > 30 && gear <= 40) {
-                    speed += 3;
-                    gear = 3;
-                }
-                else if (gear > 40 && gear <= 50) {
-                    speed += 4;
-                    gear = 4;
-                }
+    public void accelerate() {
+        if (speed < 20) {
+            speed++;
+        } else if (speed >= 20 && speed <= 30) {
+            speed += 2;
+        } else if (speed >= 31 && speed <= 40) {
+            speed += 3;
+        } else {
+            speed += 4;
+        }
     }
 
+    public void decelerate() {
+        if (speed >= 0 && speed < 20) {
+            speed--;
+        } else if (speed >= 20 && speed <= 30) {
+            speed -= 2;
+        } else if (speed >= 31 && speed < 40) {
+            speed -= 3;
+        } else {
+            speed -= 4;
+        }if(speed < 0) speed = 0;
+    }
 
+    public void adjustSpeed(int count) {
+        if(count >= 0) speed = count;
+        else if(speed <= 30) gear = 2;
+        else if(speed <= 40) gear = 3;
+        else gear = 4;
+
+
+    }
 }

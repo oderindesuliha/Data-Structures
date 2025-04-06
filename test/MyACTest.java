@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyACTest {
-    MyAC airConditioner = new MyAC();
 
     @Test
     public void testThatMyAcIsOn() {
