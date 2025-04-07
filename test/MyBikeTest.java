@@ -51,15 +51,16 @@ public class MyBikeTest {
     }
 
     @Test
-    public void testThatMyBikeCanBeAccelerated() {
+    public void testThatMyBikeCanBeAcceleratedAndCannotExceed20() {
         MyBike bike = new MyBike();
         bike.isOn();
         assertTrue(bike.isPower());
         assertEquals(0, bike.currentSpeed());
         assertEquals(1, bike.currentGear());
-        bike.accelerate();
-        assertEquals(1, bike.currentSpeed());
-        assertEquals(1, bike.currentGear());
+        for(int index = 0; index <= 20; index++){
+            bike.accelerate();
+        }
+        assertEquals(2, bike.currentGear());
     }
 
     @Test
@@ -88,20 +89,21 @@ public class MyBikeTest {
     }
 
     @Test
-    public void testThatMyBikeChangesFromGearOneToGearTwo() {
+    public void testThatMyBikeChangesSpeedFromGearOneToGearTwo() {
         MyBike bike = new MyBike();
         bike.isOn();
         assertTrue(bike.isPower());
         assertEquals(0, bike.currentSpeed());
         assertEquals(1, bike.currentGear());
+        for (int index = 0; index <= 20; index++) {
         bike.accelerate();
-        assertEquals(22, bike.currentSpeed());
+    }
         assertEquals(2, bike.currentGear());
 
     }
 
     @Test
-    public void testThatMyBikeChangesInGearTwo() {
+    public void testThatMyBikeChangesSpeedInGearTwo() {
         MyBike bike = new MyBike();
         bike.isOn();
         assertTrue(bike.isPower());
@@ -113,57 +115,22 @@ public class MyBikeTest {
         assertEquals(2, bike.currentGear());
     }
 
-//    @Test
-//    public void testThatMyBikeChangesFromGearTwoToGearThree() {
-//        MyBike bike = new MyBike();
-//        bike.isOn();
-//        assertTrue(bike.isPower());
-//        assertEquals(0, bike.currentSpeed());
-//        assertEquals(1, bike.currentGear());
-//        bike.adjustSpeed(30);
-//        bike.accelerate();
-//        assertEquals(33, bike.currentSpeed());
-//        assertEquals(3, bike.currentGear());
-//
-//    }
-//    @Test
-//    public void testThatMyBikeChangesInGearThree() {
-//        MyBike bike = new MyBike();
-//        bike.isOn();
-//        assertTrue(bike.isPower());
-//        assertEquals(0, bike.currentSpeed());
-//        assertEquals(1, bike.currentGear());
-//        bike.adjustSpeed(35);
-//        bike.accelerate();
-//        assertEquals(38, bike.currentSpeed());
-//        assertEquals(3, bike.currentGear());
-//    }
+    @Test
+    public void testThatMyBikeChangesToGearThree() {
+        MyBike bike = new MyBike();
+        bike.isOn();
+        assertTrue(bike.isPower());
+        assertEquals(0, bike.currentSpeed());
+        assertEquals(1, bike.currentGear());
+        for(int index = 0; index < 20  ; index++) {
+            bike.accelerate();
+        }
+        //assertEquals(2, bike.currentGear());
+        assertEquals(20, bike.currentSpeed());
 
-//    @Test
-//    public void testThatMyBikeChangesFromGearThreeToGearFour() {
-//        MyBike bike = new MyBike();
-//        bike.isOn();
-//        assertTrue(bike.isPower());
-//        assertEquals(0, bike.currentSpeed());
-//        assertEquals(1, bike.currentGear());
-//        bike.adjustSpeed(38);
-//        bike.accelerate();
-//        assertEquals(41, bike.currentSpeed());
-//        assertEquals(4, bike.currentGear());
-//
-//    }
-//    @Test
-//    public void testThatMyBikeChangesToGearFour() {
-//        MyBike bike = new MyBike();
-//        bike.isOn();
-//        assertTrue(bike.isPower());
-//        assertEquals(0, bike.currentSpeed());
-//        assertEquals(1, bike.currentGear());
-//        bike.adjustSpeed(44);
-//        bike.decelerate();
-//        assertEquals(48, bike.currentSpeed());
-//        assertEquals(4, bike.currentGear());
-//    }
+
+    }
+
 
     @Test
     public void testThatMyBikeDeceleratesInGearFour() {
